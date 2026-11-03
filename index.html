@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="The Breath Lab · Rareearth Wellness">
+<meta property="og:description" content="Gentle breathing exercises for teenagers: ancient Indian breathing, explained with modern science.">
+<meta property="og:image" content="https://breathlab.rareearthwellness.com/posters/reset-exam.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='12' fill='%234FE3D0'/%3E%3C/svg%3E">
+<title>The Breath Lab</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="The Breath Lab by Rareearth Wellness: gentle breathing exercises for teenagers, ancient Indian breathing explained with modern science.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: an immersive night-sky lab; one glowing breath orb opens the page, the library reads like instrument cards, the player takes the whole screen. Deliberately dark-only. */
+:root {
+  --ink: #090C1F;        /* page ground, deep night */
+  --ink-2: #111735;      /* raised surfaces */
+  --ink-3: #1B2350;      /* borders, tracks */
+  --mist: #E8ECFF;       /* main text */
+  --mist-2: #A7B0D8;     /* secondary text */
+  --glow: #4FE3D0;       /* turquoise breath light */
+  --glow-soft: rgba(79,227,208,.16);
+  --violet: #8E7CFF;     /* second light */
+  --saffron: #FFB547;    /* Indian-tradition accent, used sparingly */
+  --danger: #FF8A7A;
+  --f-display: "Unbounded", "Segoe UI", system-ui, sans-serif;
+  --f-body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --r: 18px;
+  color-scheme: dark;
+}
+[hidden] { display: none !important; }
+html { background: var(--ink); }
+body { background: var(--ink); color: var(--mist); font: 17px/1.6 var(--f-body); margin: 0; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--ink); }
+.wrap { max-width: 1080px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+a { color: var(--glow); }
+:focus-visible { outline: 2px solid var(--glow); outline-offset: 3px; border-radius: 6px; }
+h1, h2, h3 { font-family: var(--f-display); font-weight: 600; text-wrap: balance; line-height: 1.15; margin: 0; letter-spacing: -.01em; }
+h1 { font-size: clamp(30px, 6.4vw, 60px); }
+h2 { font-size: clamp(22px, 3.6vw, 34px); }
+h3 { font-size: 18px; }
+p { margin: 0; }
+.eyebrow { font: 500 12px/1.2 var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--glow); }
+.muted { color: var(--mist-2); }
+.btn { font: 700 16px/1 var(--f-body); border: 0; border-radius: 999px; padding: 15px 24px; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; text-decoration: none; min-height: 48px; }
+.btn-primary { background: var(--glow); color: var(--ink); }
+.btn-primary:hover { filter: brightness(1.08); }
+.btn-ghost { background: transparent; color: var(--mist); box-shadow: inset 0 0 0 1.5px var(--ink-3); }
+.btn-ghost:hover { box-shadow: inset 0 0 0 1.5px var(--mist-2); }
+
+/* top bar */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--ink) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--ink-3); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 12px; }
+.brand { font: 600 15px var(--f-display); color: var(--mist); text-decoration: none; display: flex; gap: 10px; align-items: center; }
+.brand i { width: 14px; height: 14px; border-radius: 50%; background: var(--glow); box-shadow: 0 0 14px var(--glow); animation: pulse 7s ease-in-out infinite; }
+.top nav { display: flex; gap: 18px; font-size: 15px; }
+.top nav a { color: var(--mist-2); text-decoration: none; }
+.top nav a:hover { color: var(--mist); }
+@media (max-width: 640px) { .top nav { display: none; } }
+
+/* hero */
+.hero { padding-block: 40px 56px; display: grid; grid-template-columns: 1.1fr .9fr; gap: 32px; align-items: center; }
+.hero > div { min-width: 0; display: grid; gap: 20px; }
+.hero .lede { font-size: 19px; color: var(--mist-2); max-width: 34ch; }
+.hero .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+.orb-stage { position: relative; aspect-ratio: 1; max-width: 100%; display: grid; place-items: center; }
+.orb-stage canvas { width: 100%; height: 100%; display: block; }
+.orb-label { position: absolute; bottom: 8%; left: 0; right: 0; text-align: center; font: 500 13px var(--f-mono); letter-spacing: .2em; text-transform: uppercase; color: var(--mist-2); }
+@media (max-width: 760px) { .hero { grid-template-columns: 1fr; padding-block: 24px 40px; } .orb-stage { max-width: 340px; margin: 0 auto; order: -1; } }
+@keyframes pulse { 0%,100% { transform: scale(.75); opacity: .7 } 40% { transform: scale(1.15); opacity: 1 } }
+
+section.block { padding-block: 56px; border-top: 1px solid var(--ink-3); }
+.block-head { display: grid; gap: 10px; margin-bottom: 28px; max-width: 60ch; }
+
+/* safety strip */
+.safety { display: flex; gap: 16px; align-items: flex-start; background: var(--ink-2); border-radius: var(--r); padding: 18px 20px; border: 1px solid var(--ink-3); }
+.safety b { color: var(--saffron); font-family: var(--f-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; display: block; margin-bottom: 4px; }
+
+/* library */
+.lib { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+.card { background: var(--ink-2); border: 1px solid var(--ink-3); border-radius: var(--r); padding: 18px; display: grid; gap: 12px; grid-template-rows: auto auto 1fr auto; text-align: left; color: inherit; font: inherit; cursor: pointer; position: relative; overflow: hidden; }
+.card:hover { border-color: color-mix(in srgb, var(--glow) 55%, var(--ink-3)); }
+.card .thumb { height: 110px; border-radius: 12px; background: var(--ink); overflow: hidden; }
+.card .thumb canvas { width: 100%; height: 100%; display: block; }
+.card .meta { display: flex; flex-wrap: wrap; gap: 6px 12px; font: 13px var(--f-mono); color: var(--mist-2); }
+.card .sk { font-style: italic; color: var(--saffron); font-size: 14px; }
+.card .lock { position: absolute; top: 14px; right: 14px; font: 500 11px var(--f-mono); letter-spacing: .1em; text-transform: uppercase; background: var(--ink); color: var(--violet); border: 1px solid var(--ink-3); border-radius: 999px; padding: 4px 9px; }
+.card.locked { opacity: .82; }
+
+/* course */
+.days { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; counter-reset: d; }
+.day { background: var(--ink-2); border: 1px solid var(--ink-3); border-radius: 14px; padding: 16px; display: grid; gap: 6px; }
+.day .n { font: 500 12px var(--f-mono); color: var(--violet); letter-spacing: .12em; text-transform: uppercase; }
+.day.done { border-color: var(--glow); }
+.day.done .n::after { content: " · done"; color: var(--glow); }
+.course-cta { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+
+/* science + myth */
+.sci { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+.vids { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
+.vid { background: var(--ink-2); border: 1px solid var(--ink-3); border-radius: var(--r); overflow: hidden; text-align: left; color: inherit; font: inherit; cursor: pointer; padding: 0; display: grid; grid-template-rows: auto 1fr; }
+.vid:hover { border-color: color-mix(in srgb, var(--glow) 55%, var(--ink-3)); }
+.vid .pic { position: relative; aspect-ratio: 16/9; background: var(--ink) center/cover no-repeat; max-width: 100%; }
+.vid .pic::after { content: ""; position: absolute; left: 50%; top: 50%; width: 54px; height: 54px; margin: -27px 0 0 -27px; border-radius: 50%; background: color-mix(in srgb, var(--ink) 70%, transparent); box-shadow: inset 0 0 0 2px var(--glow); }
+.vid .pic::before { content: ""; position: absolute; left: 50%; top: 50%; margin: -9px 0 0 -5px; border-style: solid; border-width: 9px 0 9px 15px; border-color: transparent transparent transparent var(--glow); z-index: 1; }
+.vid .len { position: absolute; right: 8px; bottom: 8px; font: 500 12px var(--f-mono); background: color-mix(in srgb, var(--ink) 80%, transparent); padding: 3px 7px; border-radius: 6px; }
+.vid .txt { padding: 14px 16px 16px; display: grid; gap: 4px; }
+.watch { margin-top: 8px; justify-self: start; font: 600 14px var(--f-body); color: var(--glow); background: none; border: 1.5px solid var(--glow); border-radius: 999px; padding: 7px 12px; cursor: pointer; }
+.vmodal { position: fixed; inset: 0; z-index: 40; background: rgba(4,6,18,.92); display: grid; place-items: center; padding: calc(16px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) calc(16px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.vmodal .box { width: min(1100px, 100%); display: grid; gap: 12px; }
+.vmodal video { width: 100%; max-height: 78vh; border-radius: 14px; background: #000; }
+.sci article { padding: 16px; border-radius: 14px; border: 1px dashed var(--ink-3); display: grid; gap: 6px; }
+.sci .tag { font: 500 11px var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--mist-2); }
+.myths { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.myth { background: var(--ink-2); border: 1px solid var(--ink-3); border-radius: 14px; padding: 18px; text-align: left; color: inherit; font: inherit; cursor: pointer; display: grid; gap: 10px; min-height: 150px; align-content: start; }
+.myth .k { font: 500 11px var(--f-mono); letter-spacing: .12em; text-transform: uppercase; }
+.myth .k.m { color: var(--danger); }
+.myth .k.s { color: var(--glow); }
+.myth .hint { font-size: 13px; color: var(--mist-2); }
+
+footer { border-top: 1px solid var(--ink-3); padding-block: 36px 48px; color: var(--mist-2); font-size: 15px; display: grid; gap: 12px; }
+
+/* sheet (exercise details) */
+.sheet-bg { position: fixed; inset: 0; background: rgba(4,6,18,.7); z-index: 20; display: grid; align-items: end; justify-items: center; }
+.sheet { background: var(--ink-2); width: 100%; max-width: 620px; max-height: 92vh; overflow: auto; border-radius: 22px 22px 0 0; padding: 22px max(20px, env(safe-area-inset-right, 0px)) calc(24px + env(safe-area-inset-bottom, 0px)) max(20px, env(safe-area-inset-left, 0px)); display: grid; gap: 16px; border: 1px solid var(--ink-3); }
+@media (min-width: 700px) { .sheet-bg { align-items: center; } .sheet { border-radius: 22px; } }
+.sheet ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill { font: 500 14px var(--f-mono); border-radius: 999px; padding: 9px 14px; border: 1.5px solid var(--ink-3); background: transparent; color: var(--mist); cursor: pointer; min-height: 40px; }
+.pill[aria-pressed="true"] { border-color: var(--glow); background: var(--glow-soft); }
+.note { font-size: 14px; color: var(--mist-2); border-left: 3px solid var(--saffron); padding-left: 12px; }
+.row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
+
+/* player */
+.player { position: fixed; inset: 0; z-index: 30; background: var(--ink); display: grid; grid-template-rows: auto 1fr auto; padding: calc(12px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) calc(16px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.p-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.p-title { font: 600 15px var(--f-display); }
+.icon-btn { width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid var(--ink-3); background: transparent; color: var(--mist); cursor: pointer; display: grid; place-items: center; font: 600 15px var(--f-body); }
+.icon-btn svg { width: 22px; height: 22px; }
+.p-stage { position: relative; min-height: 0; display: grid; place-items: center; }
+.p-stage canvas { width: 100%; height: 100%; display: block; position: absolute; inset: 0; }
+.p-cue { position: relative; z-index: 2; text-align: center; display: grid; gap: 6px; pointer-events: none; }
+.p-cue .w { font: 600 clamp(24px, 6vw, 40px) var(--f-display); text-shadow: 0 2px 24px var(--ink); }
+.p-cue .c { font: 500 clamp(40px, 11vw, 72px) var(--f-mono); color: var(--glow); text-shadow: 0 2px 24px var(--ink); font-variant-numeric: tabular-nums; }
+.p-caption { min-height: 3.2em; text-align: center; max-width: 52ch; margin: 0 auto; color: var(--mist-2); font-size: 16px; }
+.p-bottom { display: grid; gap: 12px; }
+.bar { height: 6px; background: var(--ink-3); border-radius: 99px; overflow: hidden; }
+.bar i { display: block; height: 100%; width: 0; background: var(--glow); border-radius: 99px; }
+.p-ctrl { display: flex; justify-content: center; align-items: center; gap: 16px; }
+.p-ctrl .main { width: 72px; height: 72px; background: var(--glow); color: var(--ink); border: 0; }
+.p-meta { display: flex; justify-content: space-between; font: 13px var(--f-mono); color: var(--mist-2); font-variant-numeric: tabular-nums; }
+.overlay-card { position: relative; z-index: 3; background: color-mix(in srgb, var(--ink-2) 92%, transparent); border: 1px solid var(--ink-3); border-radius: 20px; padding: 22px; max-width: 520px; display: grid; gap: 14px; margin: 0 4px; }
+.overlay-card ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 15px; }
+.feel { display: flex; flex-wrap: wrap; gap: 8px; }
+textarea { width: 100%; box-sizing: border-box; min-height: 80px; background: var(--ink); color: var(--mist); border: 1.5px solid var(--ink-3); border-radius: 12px; padding: 10px 12px; font: 16px var(--f-body); }
+@media (prefers-reduced-motion: reduce) { .brand i { animation: none; } }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><i aria-hidden="true"></i>The Breath Lab</a>
+    <nav aria-label="Sections">
+      <a href="#try">Try it</a><a href="#real-life">Videos</a><a href="#course">7-day course</a><a href="#science">Science</a><a href="#myths">Myth vs science</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div>
+      <span class="eyebrow">Rareearth Wellness · for ages 13–19</span>
+      <h1>Your brain is working hard. Give it a better breathing space.</h1>
+      <p class="lede">Before the exam. During a stressful day. When your thoughts won't slow down. Ancient Indian breathing, explained with modern science. Try it yourself.</p>
+      <div class="ctas">
+        <a class="btn btn-primary" href="#try">Enter the Breath Lab</a>
+        <a class="btn btn-ghost" href="#science">Explore the science</a>
+      </div>
+    </div>
+    <div class="orb-stage" aria-hidden="true">
+      <canvas id="heroOrb"></canvas>
+      <div class="orb-label" id="heroLabel">Breathe in</div>
+    </div>
+  </div>
+
+  <section class="block" id="try" aria-labelledby="try-h">
+    <div class="wrap">
+      <div class="block-head">
+        <span class="eyebrow">Experience the breath</span>
+        <h2 id="try-h">Pick one. Two minutes is enough.</h2>
+        <p class="muted">Four exercises are free to try. The rest are part of the 7-day course.</p>
+      </div>
+      <div class="safety" role="note">
+        <div><b>Go gently</b><span id="safetyShort"></span></div>
+      </div>
+      <div class="lib" id="lib" style="margin-top:20px"></div>
+    </div>
+  </section>
+
+  <section class="block" id="real-life" aria-labelledby="rl-h">
+    <div class="wrap">
+      <div class="block-head">
+        <span class="eyebrow">Breath for real life</span>
+        <h2 id="rl-h">One minute. One situation. One breath to try.</h2>
+        <p class="muted">Short videos with Rew, your Breath Lab guide: what is going on, and a breath you can do right there.</p>
+      </div>
+      <div class="vids" id="rlVids"></div>
+    </div>
+  </section>
+
+  <section class="block" id="course" aria-labelledby="course-h">
+    <div class="wrap">
+      <div class="block-head">
+        <span class="eyebrow">The 7-day Breath Lab</span>
+        <h2 id="course-h">Five minutes a day. Your own reset routine by day 7.</h2>
+        <p class="muted" id="courseMsg"></p>
+      </div>
+      <div class="days" id="days"></div>
+      <div class="course-cta" id="courseCta"></div>
+    </div>
+  </section>
+
+  <section class="block" id="science" aria-labelledby="sci-h">
+    <div class="wrap">
+      <div class="block-head">
+        <span class="eyebrow">The science of breathing</span>
+        <h2 id="sci-h">What actually happens when you breathe slowly?</h2>
+        <p class="muted">Short explainers with Rew, your Breath Lab guide. We keep claims to what research supports and say so when research is early.</p>
+      </div>
+      <div class="sci" id="sci"></div>
+    </div>
+  </section>
+
+  <section class="block" id="myths" aria-labelledby="myth-h">
+    <div class="wrap">
+      <div class="block-head">
+        <span class="eyebrow">Myth vs science</span>
+        <h2 id="myth-h">Heard this online? Tap to check.</h2>
+      </div>
+      <div class="myths" id="mythList"></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap" style="display:grid;gap:12px">
+      <p><b style="color:var(--mist)">Breathing is a skill, not a cure.</b> These exercises give you a calm moment. They do not treat any illness. If you are struggling, talk to a parent, teacher, school counsellor or doctor. In India you can call Tele-MANAS on <b style="color:var(--mist)">14416</b>, free, at any hour.</p>
+      <p>Want to know your teenager's strengths? Try <a href="https://innercompass.rareearthwellness.com" target="_blank" rel="noopener">Inner Compass Teen</a>. · <a href="https://rareearthwellness.com" target="_blank" rel="noopener">rareearthwellness.com</a></p>
+      <p>Your progress is saved only on this device. We don't collect names or feelings.</p>
+    </div>
+  </footer>
+</main>
+
+<div class="sheet-bg" id="sheetBg" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" id="sheet"></div>
+</div>
+
+<div class="vmodal" id="vmodal" hidden role="dialog" aria-modal="true" aria-labelledby="vTitle">
+  <div class="box">
+    <div class="row"><h3 id="vTitle"></h3><button class="icon-btn" id="vClose" aria-label="Close video"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <video id="vEl" controls playsinline preload="none"></video>
+    <p class="muted" style="font-size:14px">Go gently. If you feel dizzy, stop and breathe normally.</p>
+  </div>
+</div>
+
+<div class="player" id="player" hidden role="dialog" aria-modal="true" aria-labelledby="pTitle">
+  <div class="p-top">
+    <button class="icon-btn" id="pExit" aria-label="Exit exercise"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="p-title" id="pTitle"></div>
+    <button class="icon-btn" id="pSound" aria-label="Sound on" aria-pressed="true"></button>
+  </div>
+  <div class="p-stage">
+    <canvas id="pCanvas"></canvas>
+    <div class="p-cue" id="pCue" aria-live="polite"><div class="w" id="pWord"></div><div class="c" id="pCount"></div></div>
+    <div class="overlay-card" id="pOverlay" hidden></div>
+  </div>
+  <div class="p-bottom">
+    <p class="p-caption" id="pCaption" aria-live="polite"></p>
+    <div class="bar" aria-hidden="true"><i id="pBar"></i></div>
+    <div class="p-meta"><span id="pPattern"></span><span id="pTime"></span></div>
+    <div class="p-ctrl"><button class="icon-btn main" id="pPlay" aria-label="Pause"></button></div>
+  </div>
+</div>
+
+<script>
+const DATA = {"version": "1.0.0", "safety": {"short": "Go gently. Your breathing should feel comfortable. Never force a breath or compete to hold it. If you feel dizzy, light-headed or uncomfortable, stop and breathe normally. You can skip any exercise.", "full": ["Sit or lie somewhere safe. Never practise in water (pool, sea or bath), while driving or cycling, or while standing on anything high.", "Breathe gently through your nose if you can. No big, forced breaths.", "Pauses (holds) are always optional and short. Never hold your breath to test yourself or compete with friends.", "Stop and breathe normally if you feel dizzy, tingly, light-headed, breathless or uncomfortable.", "If you have asthma, a heart or lung condition, epilepsy, or a doctor has asked you to be careful with exercise, check with your doctor first, and keep your inhaler nearby if you use one.", "Breathing exercises are a way to give yourself a calm moment. They are not a treatment for any illness. If you are struggling, talk to a parent, a teacher, a school counsellor or a doctor. In India you can call Tele-MANAS on 14416, free, at any hour."]}, "exercises": [{"id": "box", "title": "Box Breathing", "tagline": "Follow the light around the square", "purpose": "A steady rhythm that helps you pause and settle.", "use_when": ["before a test", "when your mind is busy", "any time you want to reset"], "tier": "free", "level": "Beginner", "category": "settle", "tradition": "Modern technique", "visual": "square", "minutes": 3, "patterns": {"standard": {"label": "5 · 5 · 5 · 5", "phases": [["in", 5], ["hold", 5], ["out", 5], ["hold", 5]]}, "no_hold": {"label": "No pauses", "phases": [["in", 5], ["out", 6]]}}, "cycles": 8, "steps": ["Sit comfortably and relax your shoulders.", "Breathe in as the light climbs.", "Pause only if comfortable as it moves across.", "Breathe out as it goes down.", "Pause gently, then begin again."], "voice_intro": "Welcome to your first Breath Lab experience. Find a comfortable position and relax your shoulders. Watch the glowing light. As it moves up, breathe in gently. As it moves across, pause only if it feels comfortable. As it moves down, slowly breathe out. As it completes the square, pause gently if you wish. No forcing. No competition. Just follow the light. Let's do it together.", "voice_outro": "Nicely done. Notice how you feel right now. You can come back to the square whenever you need a steady moment.", "safety_note": "Pauses are optional. Choose 'No pauses' if holding feels uncomfortable."}, {"id": "wave", "title": "The Wave", "tagline": "Rise with the wave, let it roll back", "purpose": "A slightly longer breath out, which many people find calming.", "use_when": ["after a long day", "when you feel tense", "before sleep"], "tier": "free", "level": "Beginner", "category": "calm", "tradition": "Modern technique", "visual": "wave", "minutes": 3, "patterns": {"standard": {"label": "In 5 · Out 6", "phases": [["in", 5], ["out", 6]]}}, "cycles": 25, "steps": ["Breathe in gently for 5 as the wave rises.", "Breathe out slowly for 6 as it rolls back.", "No holding. Let it flow."], "voice_intro": "This is the Wave. Sit back and let your shoulders drop. As the wave rises, breathe in gently through your nose. As it rolls back to the shore, let the breath flow out, a little slower than it came in. There's nothing to hold and nothing to get right. Just ride the wave.", "voice_outro": "The wave settles. Take one normal breath and notice how your body feels now.", "safety_note": "No breath holds in this exercise."}, {"id": "bhramari", "title": "Humming Bee", "sanskrit": "Bhramari", "tagline": "Hum the breath out and feel the buzz", "purpose": "A gentle hum on the out-breath. Teens often find it surprisingly calming, and a little fun.", "use_when": ["when your thoughts are racing", "before studying", "when you feel restless"], "tier": "free", "level": "Beginner", "category": "calm", "tradition": "Pranayama (traditional Indian breathing)", "visual": "hum", "minutes": 2, "patterns": {"standard": {"label": "In 4 · Hum 6", "phases": [["in", 4], ["hum", 6]]}}, "cycles": 10, "steps": ["Sit tall, close your eyes if you like.", "Breathe in gently through your nose.", "Keep your lips softly closed and hum 'mmm' as you breathe out.", "Feel the buzz in your face and head.", "Optional: rest your index fingers lightly on the little flaps at the front of your ears."], "voice_intro": "This is the Humming Bee, called Bhramari in Sanskrit, one of the oldest breathing practices from India. Sit tall and relax your face. Breathe in gently through your nose. Then, with your lips softly closed, breathe out with a long, low hum, like a bee. Feel the buzz in your face and your head. If you like, rest your index fingers lightly on the small flaps at the front of your ears, without pressing. Breathe in. And hum.", "voice_outro": "Let the humming fade. Sit quietly for a moment and notice the stillness after the sound.", "safety_note": "Keep the hum soft and comfortable. Never press hard on your ears."}, {"id": "exam_reset", "title": "Exam Reset", "tagline": "Two minutes before you open the paper", "purpose": "A short break to settle before an exam or a study session.", "use_when": ["right before an exam", "before starting homework", "when you go blank"], "tier": "free", "level": "Beginner", "category": "focus", "tradition": "Modern technique", "visual": "focus_ring", "minutes": 2, "patterns": {"standard": {"label": "In 5 · Out 6", "phases": [["in", 5], ["out", 6]]}}, "cycles": 17, "steps": ["Feet flat, shoulders down.", "Breathe in for 5 as the ring grows.", "Breathe out for 6 as it shrinks.", "Then start with one question. One step at a time."], "voice_intro": "Before you open the paper, give yourself a moment. Put both feet flat on the floor and let your shoulders drop. Breathe in gently for five as the ring grows. Breathe out for six as it shrinks. That's all. Two minutes.", "voice_outro": "You don't need to solve the whole paper in the first minute. Start with one question you know. One step at a time.", "safety_note": "No breath holds. If you're in an exam hall, you can do this silently with your eyes on your desk."}, {"id": "balloon", "title": "The Balloon", "sanskrit": "Deergha Swasam (three-part breath)", "tagline": "Meet your diaphragm", "purpose": "Learn to breathe with your diaphragm, your main breathing muscle.", "use_when": ["to learn how breathing works", "when your breath feels high in your chest"], "tier": "course", "course_day": 1, "level": "Beginner", "category": "learn", "tradition": "Pranayama (traditional Indian breathing)", "visual": "balloon", "minutes": 4, "patterns": {"standard": {"label": "In 4 · Out 5", "phases": [["in", 4], ["out", 5]]}}, "cycles": 26, "steps": ["Sit or lie down. One hand on your belly, one on your chest.", "Breathe in gently and let your belly rise first, like a balloon filling.", "Let the breath reach your ribs, then your upper chest, without forcing.", "Breathe out and let the balloon empty."], "voice_intro": "Today you meet your diaphragm, the dome-shaped muscle under your lungs that does most of your breathing. Place one hand on your belly and one on your chest. As you breathe in, let your belly rise first, like a balloon filling with air. Then feel your ribs widen a little, and finally your upper chest. Don't force a big breath. As you breathe out, let the balloon gently empty.", "voice_outro": "Your diaphragm worked quietly the whole time. It does this about twenty thousand times a day, mostly without you noticing.", "safety_note": "Comfortable, gentle breaths only. You are not trying to take the biggest breath possible."}, {"id": "box_2", "title": "The Square, Level 2", "tagline": "Box breathing with a slightly longer rhythm", "purpose": "Build on box breathing with a slower, steadier rhythm.", "use_when": ["when you've practised Box Breathing a few times"], "tier": "course", "course_day": 2, "level": "Building", "category": "settle", "tradition": "Modern technique", "visual": "square", "minutes": 4, "patterns": {"standard": {"label": "6 · 6 · 6 · 6", "phases": [["in", 6], ["hold", 6], ["out", 6], ["hold", 6]]}, "gentle": {"label": "5 · 5 · 5 · 5", "phases": [["in", 5], ["hold", 5], ["out", 5], ["hold", 5]]}, "no_hold": {"label": "No pauses", "phases": [["in", 5], ["out", 6]]}}, "cycles": 15, "steps": ["Choose the rhythm that feels comfortable.", "Follow the light around the square.", "Drop to 5s or 'No pauses' any time."], "voice_intro": "Welcome back to the square. Today the sides are a little longer, six counts each. If that feels like too much at any point, switch to five, or to no pauses. Comfort always wins. Follow the light.", "voice_outro": "Well done. A steady rhythm is a skill, and you just practised it.", "safety_note": "Never stretch the pauses beyond what feels easy."}, {"id": "nadi_shodhana", "title": "Alternate Nostril Breathing", "sanskrit": "Nadi Shodhana / Anulom Vilom", "tagline": "Left, right, and balanced", "purpose": "A slow, even rhythm that needs gentle attention, a calm way to get ready to study.", "use_when": ["before studying", "when you feel scattered"], "tier": "course", "course_day": 3, "level": "Building", "category": "focus", "tradition": "Pranayama (traditional Indian breathing)", "visual": "nostril", "minutes": 4, "patterns": {"standard": {"label": "In 4 · Out 4, alternating", "phases": [["in_left", 4], ["out_right", 4], ["in_right", 4], ["out_left", 4]]}}, "cycles": 15, "steps": ["Right hand up: thumb near your right nostril, ring finger near your left.", "Close the right nostril gently, breathe in through the left.", "Close the left, open the right, breathe out through the right.", "Breathe in through the right, switch, breathe out through the left.", "That's one round. No holding."], "voice_intro": "This is Nadi Shodhana, also called Anulom Vilom. Raise your right hand. Your thumb will gently close your right nostril, and your ring finger your left. Close the right side and breathe in slowly through the left. Now close the left, release the right, and breathe out through the right. Breathe in through the right. Switch, and breathe out through the left. The screen will show you which side. Slow and even, no holding.", "voice_outro": "Lower your hand and breathe normally through both nostrils. Notice whether your mind feels a little more settled.", "safety_note": "Traditional versions add long breath-holds. We leave them out. If your nose is blocked, just imagine the switch and breathe normally."}, {"id": "focus_dot", "title": "The Focus Dot", "tagline": "Follow the light, breathe slowly", "purpose": "Practise steady attention while you breathe calmly.", "use_when": ["when you can't concentrate", "between study blocks"], "tier": "course", "course_day": 4, "level": "Building", "category": "focus", "tradition": "Modern technique", "visual": "focus_dot", "minutes": 3, "patterns": {"standard": {"label": "In 5 · Out 6", "phases": [["in", 5], ["out", 6]]}}, "cycles": 25, "steps": ["Keep your head still and follow the dot with your eyes.", "Breathe in as it moves one way, out as it returns.", "When your mind wanders, notice it and come back to the dot. That noticing is the practice."], "voice_intro": "Keep your head still and follow the dot with your eyes. Breathe in gently as it travels, and out as it returns. Your mind will wander. That's normal. Each time you notice and come back to the dot, you're training your attention.", "voice_outro": "Every time you came back to the dot, that was the practice working.", "safety_note": "This is an attention exercise, not a way to raise IQ."}, {"id": "sigh", "title": "The Double Sigh", "tagline": "Two sips in, one long sigh out", "purpose": "Two short in-breaths through the nose, then one long, slow breath out. A quick way to let tension go.", "use_when": ["right before a presentation", "when you feel wound up"], "tier": "course", "course_day": 5, "level": "Beginner", "category": "calm", "tradition": "Modern technique (cyclic sighing)", "visual": "sigh", "minutes": 3, "patterns": {"standard": {"label": "In 2 · in 1 · out 6", "phases": [["in", 2], ["in_top", 1], ["out", 6]]}}, "cycles": 20, "steps": ["Breathe in through your nose.", "Take a small extra sip of air on top.", "Let it all out slowly through your mouth, like a long sigh."], "voice_intro": "This is the Double Sigh. Breathe in through your nose. Now take a small extra sip of air on top. And let it all out slowly through your mouth, like a long, relaxed sigh. Gentle sips, a long, easy sigh out.", "voice_outro": "Let your breathing go back to normal. Sometimes a few sighs is all it takes to start again.", "safety_note": "The sips are small. If you feel light-headed, slow down or stop."}, {"id": "cooling", "title": "Cooling Breath", "sanskrit": "Sheetali / Sheetkari", "tagline": "Breathe in cool air, let the heat go", "purpose": "A traditional breath that feels cool on the way in, useful when you're hot, frustrated or angry.", "use_when": ["when you're angry", "on a hot day", "after an argument"], "tier": "course", "course_day": 6, "level": "Beginner", "category": "calm", "tradition": "Pranayama (traditional Indian breathing)", "visual": "cool", "minutes": 3, "patterns": {"standard": {"label": "In 4 (mouth) · Out 6 (nose)", "phases": [["in", 4], ["out", 6]]}}, "cycles": 18, "steps": ["Sheetali: roll your tongue into a tube and breathe in through it.", "Can't roll your tongue? Sheetkari: rest your teeth together, lips apart, and breathe in through the gaps.", "Close your mouth and breathe out slowly through your nose."], "voice_intro": "This is the Cooling Breath. If you can roll your tongue into a tube, breathe in through it. That's Sheetali. If you can't, and many people can't, rest your teeth lightly together, part your lips, and breathe in through the gaps. That's Sheetkari. Feel the cool air. Then close your mouth and breathe out slowly through your nose.", "voice_outro": "Close your mouth and breathe normally. Notice the coolness, and any heat that has eased.", "safety_note": "Skip this one in cold or dusty air, or if you have asthma that's triggered by cold air."}, {"id": "calm_button", "title": "The Calm Button", "tagline": "No counting. Just notice.", "purpose": "For moments of overload. No pattern to follow, just a guided pause.", "use_when": ["when everything feels too much", "after an argument", "when you're about to react"], "tier": "course", "course_day": 6, "level": "Beginner", "category": "reset", "tradition": "Modern technique (breath awareness)", "visual": "orb", "minutes": 2, "patterns": {"standard": {"label": "Your own pace", "phases": [["natural", 120]]}}, "cycles": 1, "steps": ["Pause.", "Drop your shoulders.", "Notice your breath without changing it.", "Let each breath out be a little softer."], "voice_intro": "Pause. Whatever is happening, it can wait for two minutes. Let your shoulders drop. Unclench your jaw. Now just notice your breath, without changing it. Where do you feel it? Your nose, your chest, your belly? You don't have to fix anything. Just let each breath out be a little softer than the one before.", "voice_outro": "You pressed pause. You don't have to decide anything right now. When you're ready, take the next small step.", "safety_note": "No pattern, no holding."}, {"id": "night_sky", "title": "Night Sky", "sanskrit": "with a soft Ujjayi breath", "tagline": "Slow down under the stars", "purpose": "A slow wind-down before bed.", "use_when": ["before bed", "when you can't switch off"], "tier": "course", "course_day": 7, "level": "Beginner", "category": "sleep", "tradition": "Pranayama (traditional Indian breathing)", "visual": "stars", "minutes": 5, "patterns": {"standard": {"label": "In 4 · Out 6", "phases": [["in", 4], ["out", 6]]}}, "cycles": 30, "steps": ["Lie down or sit back, lights low.", "Breathe in through your nose as the stars brighten.", "Breathe out slowly as they dim. Optional: a soft 'ocean' sound in your throat (Ujjayi)."], "voice_intro": "Lie down or sit back with the lights low. Watch the stars. As they brighten, breathe in gently through your nose. As they dim, breathe out slowly. If you like, gently narrow the back of your throat as you breathe out, so the breath sounds like a soft ocean. That's Ujjayi, the ocean breath. Keep it quiet and easy.", "voice_outro": "Let the stars fade. Let your breath find its own pace. Good night.", "safety_note": "This is a wind-down routine, not a treatment for sleep problems."}], "course": {"title": "The 7-Day Breath Lab", "promise": "Seven short sessions, about five minutes each. By day 7 you'll have your own reset routine.", "message": "This is not a competition. It's about discovering what works for you.", "days": [{"day": 1, "title": "Meet your breath", "exercises": ["balloon"], "video": "guided_balloon", "science": "diaphragm", "reflection": "Where did you feel your breath most: belly, ribs or chest?"}, {"day": 2, "title": "The square", "exercises": ["box_2"], "video": "guided_box", "science": "stress_response", "reflection": "Which rhythm felt right: 3s, 4s or no pauses?"}, {"day": 3, "title": "Balance", "exercises": ["nadi_shodhana"], "video": "guided_nadi", "science": "brain_breath", "reflection": "Did one side of your nose feel more open?"}, {"day": 4, "title": "Focus mode", "exercises": ["focus_dot"], "video": "guided_focus", "science": "concentration", "reflection": "How many times did you notice your mind wandering? (Noticing is the skill.)"}, {"day": 5, "title": "Exam ready", "exercises": ["sigh", "exam_reset"], "video": "guided_sigh", "science": "nervous_breath", "reflection": "When this week could you use the Exam Reset?"}, {"day": 6, "title": "Emotional reset", "exercises": ["cooling", "calm_button"], "video": "guided_cooling", "science": "pause_before_react", "reflection": "Think of a moment that usually makes you react. Which breath would you try?"}, {"day": 7, "title": "Your personal reset", "exercises": ["night_sky"], "video": "guided_night_sky", "science": null, "reflection": "Pick your favourite two exercises. When will you use each one?"}]}};
+const SCIENCE = [{"title": "Meet your diaphragm", "len": "3–4 min", "blurb": "The dome-shaped muscle that breathes for you about 20,000 times a day."}, {"title": "What happens when you get stressed?", "len": "4 min", "blurb": "Your body's alarm system, and the one part of it you can steer."}, {"title": "Your brain and your breath", "len": "4 min", "blurb": "Automatic and voluntary at once, and what early research is finding."}, {"title": "Why breathing changes when you're nervous", "len": "3 min", "blurb": "Fast and high when nervous, and the simple counter-move of a longer breath out."}, {"title": "Can breathing help you concentrate?", "len": "3–4 min", "blurb": "What we know, what we don't, and why no breathing exercise raises IQ."}, {"title": "The ancient science of pranayama", "len": "4 min", "blurb": "Traditional Indian breathing, and what modern studies are testing."}, {"title": "Breathing, stress and your skin", "len": "2–3 min", "blurb": "Stress can affect skin, but breathing is not an acne treatment."}, {"title": "Eyes and screen reset", "len": "3 min", "blurb": "The 20-20-20 habit, blinking, and three slow breaths."}];
+const MYTHS = [["Breathing exercises raise your IQ.", "They may help you feel calmer and prepare to focus. There's no evidence they increase IQ."], ["Deep breathing clears acne.", "Stress can influence some skin conditions, but breathing is not an acne treatment."], ["Breathing exercises improve your eyesight.", "There's no established evidence. Screen breaks and blinking help your eyes feel comfortable."], ["You need huge, deep breaths for it to work.", "Gentle, comfortable breaths are enough. Forcing big breaths can make you dizzy."], ["The longer you hold your breath, the better.", "Pauses are optional and short. Competitive breath-holding is dangerous and can make you faint."], ["Breathwork can replace a doctor or counsellor.", "It's a helpful habit, not a treatment. If you're struggling, talk to someone you trust."], ["Pranayama is only for yoga experts.", "Gentle practices like the Humming Bee can be done by anyone, sitting on a chair."], ["Breathing through your mouth gets you more calm.", "Calm breathing usually works best through the nose."]];
+const VIDEOS = [{"id": "reset-exam", "group": "real", "title": "The 2-minute exam reset", "src": "videos/reset-exam.mp4", "poster": "posters/reset-exam.jpg", "len": "1:23"}, {"id": "reset-homework", "group": "real", "title": "Homework mountain", "src": "videos/reset-homework.mp4", "poster": "posters/reset-homework.jpg", "len": "1:14"}, {"id": "reset-racing-mind", "group": "real", "title": "When your mind is racing", "src": "videos/reset-racing-mind.mp4", "poster": "posters/reset-racing-mind.jpg", "len": "1:00"}, {"id": "reset-speaking", "group": "real", "title": "Before you speak in front of the class", "src": "videos/reset-speaking.mp4", "poster": "posters/reset-speaking.jpg", "len": "0:58"}, {"id": "reset-nervous", "group": "real", "title": "Nervous about something", "src": "videos/reset-nervous.mp4", "poster": "posters/reset-nervous.jpg", "len": "1:02"}, {"id": "reset-argument", "group": "real", "title": "After an argument", "src": "videos/reset-argument.mp4", "poster": "posters/reset-argument.jpg", "len": "1:02"}, {"id": "reset-angry", "group": "real", "title": "Frustrated or angry", "src": "videos/reset-angry.mp4", "poster": "posters/reset-angry.jpg", "len": "1:01"}, {"id": "reset-focus", "group": "real", "title": "Can't concentrate", "src": "videos/reset-focus.mp4", "poster": "posters/reset-focus.jpg", "len": "1:05"}, {"id": "reset-wind-down", "group": "real", "title": "Winding down after a long day", "src": "videos/reset-wind-down.mp4", "poster": "posters/reset-wind-down.jpg", "len": "0:59"}, {"id": "reset-collect", "group": "real", "title": "A moment to collect your thoughts", "src": "videos/reset-collect.mp4", "poster": "posters/reset-collect.jpg", "len": "0:59"}, {"id": "science-diaphragm", "group": "science", "title": "Meet your diaphragm", "blurb": "The dome-shaped muscle that breathes for you about 20,000 times a day.", "src": "videos/science-diaphragm.mp4", "poster": "posters/science-diaphragm.jpg", "len": "1:21"}, {"id": "science-stress", "group": "science", "title": "What happens when you get stressed?", "blurb": "Your body's alarm system, and the one part of it you can steer.", "src": "videos/science-stress.mp4", "poster": "posters/science-stress.jpg", "len": "1:17"}, {"id": "science-brain", "group": "science", "title": "Your brain and your breath", "blurb": "Automatic and voluntary at once, and what early research is finding.", "src": "videos/science-brain.mp4", "poster": "posters/science-brain.jpg", "len": "1:20"}, {"id": "science-nervous", "group": "science", "title": "Why breathing changes when you're nervous", "blurb": "Fast and high when nervous, and the simple counter-move of a longer breath out.", "src": "videos/science-nervous.mp4", "poster": "posters/science-nervous.jpg", "len": "1:12"}, {"id": "science-concentration", "group": "science", "title": "Can breathing help you concentrate?", "blurb": "What we know, what we don't, and why no breathing exercise raises IQ.", "src": "videos/science-concentration.mp4", "poster": "posters/science-concentration.jpg", "len": "1:00"}, {"id": "science-pranayama", "group": "science", "title": "The ancient science of pranayama", "blurb": "Traditional Indian breathing, and what modern studies are testing.", "src": "videos/science-pranayama.mp4", "poster": "posters/science-pranayama.jpg", "len": "1:04"}, {"id": "science-skin", "group": "science", "title": "Breathing, stress and your skin", "blurb": "Stress can affect skin, but breathing is not an acne treatment.", "src": "videos/science-skin.mp4", "poster": "posters/science-skin.jpg", "len": "0:47"}, {"id": "science-eyes", "group": "science", "title": "Eyes and screen reset", "blurb": "The 20-20-20 habit, blinking, and three slow breaths.", "src": "videos/science-eyes.mp4", "poster": "posters/science-eyes.jpg", "len": "0:52"}, {"id": "course-day1", "group": "course", "title": "Day 1 · Meet your breath", "src": "videos/course-day1.mp4", "poster": "posters/course-day1.jpg", "len": "3:35"}, {"id": "course-day2", "group": "course", "title": "Day 2 · The square", "src": "videos/course-day2.mp4", "poster": "posters/course-day2.jpg", "len": "3:39"}, {"id": "course-day3", "group": "course", "title": "Day 3 · Balance", "src": "videos/course-day3.mp4", "poster": "posters/course-day3.jpg", "len": "3:46"}, {"id": "course-day4", "group": "course", "title": "Day 4 · Focus mode", "src": "videos/course-day4.mp4", "poster": "posters/course-day4.jpg", "len": "3:23"}, {"id": "course-day5", "group": "course", "title": "Day 5 · Exam ready", "src": "videos/course-day5.mp4", "poster": "posters/course-day5.jpg", "len": "3:30"}, {"id": "course-day6", "group": "course", "title": "Day 6 · Emotional reset", "src": "videos/course-day6.mp4", "poster": "posters/course-day6.jpg", "len": "3:44"}, {"id": "course-day7", "group": "course", "title": "Day 7 · Your personal reset", "src": "videos/course-day7.mp4", "poster": "posters/course-day7.jpg", "len": "3:59"}];
+
+/* ---------- small helpers ---------- */
+const $ = (s, el = document) => el.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const store = {
+  get(k, d) { try { const v = localStorage.getItem("bl." + k); return v ? JSON.parse(v) : d; } catch { return d; } },
+  set(k, v) { try { localStorage.setItem("bl." + k, JSON.stringify(v)); } catch {} },
+};
+const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const PREVIEW = () => location.hash === "#preview" || store.get("preview", false);
+if (location.hash === "#preview") store.set("preview", true);
+const EX = Object.fromEntries(DATA.exercises.map((e) => [e.id, e]));
+const unlocked = (ex) => ex.tier === "free" || PREVIEW();
+
+const PHASE = {
+  in: { word: "Breathe in", kind: "in" }, in_top: { word: "Small sip in", kind: "in" },
+  in_left: { word: "In · left nostril", kind: "in", side: "L" }, in_right: { word: "In · right nostril", kind: "in", side: "R" },
+  hold: { word: "Pause, if comfortable", kind: "hold" },
+  out: { word: "Breathe out", kind: "out" }, hum: { word: "Hum out… mmm", kind: "out" },
+  out_left: { word: "Out · left nostril", kind: "out", side: "L" }, out_right: { word: "Out · right nostril", kind: "out", side: "R" },
+  natural: { word: "Just notice", kind: "natural" },
+};
+const bpm = (phases) => { const s = phases.reduce((a, p) => a + p[1], 0); return s >= 60 ? "your pace" : (60 / s).toFixed(1) + " breaths/min"; };
+const patternText = (phases) => phases.map(([t, s]) => (PHASE[t].kind === "hold" ? "pause " : PHASE[t].kind === "in" ? "in " : PHASE[t].kind === "natural" ? "" : t === "hum" ? "hum " : "out ") + (t === "natural" ? "your own pace" : s)).join(" · ");
+
+/* ---------- timeline: breath level 0..1 ---------- */
+const ease = (x) => 0.5 - Math.cos(Math.PI * Math.min(1, Math.max(0, x))) / 2;
+function buildTimeline(phases) {
+  // returns segments with start/end levels so every visual reads the same timeline
+  let lvl = 0; const segs = []; let t = 0;
+  for (const [type, dur] of phases) {
+    const k = PHASE[type].kind; let to = lvl;
+    if (k === "in") to = type === "in" && phases.some((p) => p[0] === "in_top") ? 0.78 : 1;
+    if (k === "out") to = 0;
+    segs.push({ type, dur, from: lvl, to, t0: t }); t += dur; lvl = to;
+  }
+  return { segs, cycle: t };
+}
+function sampleAt(tl, tt) {
+  if (tl.segs[0].type === "natural") { const x = (tt % 10) / 10; return { seg: tl.segs[0], idx: 0, p: (tt % tl.cycle) / tl.cycle, level: 0.5 - Math.cos(x * Math.PI * 2) / 2 }; }
+  const c = tt % tl.cycle; let i = 0;
+  while (i < tl.segs.length - 1 && c >= tl.segs[i].t0 + tl.segs[i].dur) i++;
+  const s = tl.segs[i]; const p = (c - s.t0) / s.dur;
+  return { seg: s, idx: i, p, level: s.from + (s.to - s.from) * ease(p) };
+}
+
+/* ---------- visuals (canvas) ---------- */
+function fitCanvas(cv) { const r = cv.getBoundingClientRect(); const d = Math.min(2, devicePixelRatio || 1); if (cv.width !== Math.round(r.width * d) || cv.height !== Math.round(r.height * d)) { cv.width = Math.round(r.width * d); cv.height = Math.round(r.height * d); } return { w: cv.width, h: cv.height, d }; }
+const CSS = getComputedStyle(document.documentElement);
+const C = { glow: CSS.getPropertyValue("--glow").trim(), violet: CSS.getPropertyValue("--violet").trim(), saffron: CSS.getPropertyValue("--saffron").trim(), mist: CSS.getPropertyValue("--mist").trim(), ink3: CSS.getPropertyValue("--ink-3").trim() };
+const STARS = Array.from({ length: 140 }, (_, i) => ({ x: Math.random(), y: Math.random(), r: Math.random() * 1.6 + .3, ph: Math.random() * 6.28 }));
+
+function orb(ctx, cx, cy, R, level, color, t) {
+  const r = R * (0.42 + 0.5 * level);
+  const g = ctx.createRadialGradient(cx, cy, r * .1, cx, cy, r * 1.9);
+  g.addColorStop(0, color); g.addColorStop(.45, color + "55"); g.addColorStop(1, color + "00");
+  ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cx, cy, r * 1.9, 0, 6.283); ctx.fill();
+  ctx.fillStyle = color; ctx.globalAlpha = .9; ctx.beginPath(); ctx.arc(cx, cy, r * .62, 0, 6.283); ctx.fill(); ctx.globalAlpha = 1;
+}
+function draw(kind, cv, s, t, opts = {}) {
+  const { w, h, d } = fitCanvas(cv); const ctx = cv.getContext("2d");
+  ctx.clearRect(0, 0, w, h);
+  const cx = w / 2, cy = h / 2, R = Math.min(w, h) * .36, L = s.level, ph = PHASE[s.seg.type];
+  ctx.lineCap = "round";
+  switch (kind) {
+    case "square": {
+      const side = R * 1.5, x0 = cx - side / 2, y0 = cy - side / 2;
+      ctx.strokeStyle = C.ink3; ctx.lineWidth = 4 * d; ctx.strokeRect(x0, y0, side, side);
+      // dot travels the perimeter in proportion to the phase durations: in = left side going up, then clockwise
+      const tl = opts.tl; const frac = (s.seg.t0 + s.p * s.seg.dur) / tl.cycle;
+      const corners = [[x0, y0 + side], [x0, y0], [x0 + side, y0], [x0 + side, y0 + side]];
+      let segFr = [], acc = 0; if (tl.segs.length === 4) { segFr = tl.segs.map((g) => g.dur / tl.cycle); } else { segFr = [.25, .25, .25, .25]; }
+      // for 2-phase patterns: inhale covers left+top, exhale covers right+bottom
+      const map = tl.segs.length === 4 ? segFr : [tl.segs[0].dur / tl.cycle / 2, tl.segs[0].dur / tl.cycle / 2, tl.segs[1].dur / tl.cycle / 2, tl.segs[1].dur / tl.cycle / 2];
+      let i = 0; acc = 0; while (i < 3 && frac > acc + map[i]) { acc += map[i]; i++; }
+      const q = Math.min(1, (frac - acc) / map[i]); const a = corners[i], b = corners[(i + 1) % 4];
+      const px = a[0] + (b[0] - a[0]) * q, py = a[1] + (b[1] - a[1]) * q;
+      ctx.strokeStyle = C.glow; ctx.lineWidth = 4 * d; ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(px, py); ctx.stroke();
+      const g = ctx.createRadialGradient(px, py, 0, px, py, 26 * d); g.addColorStop(0, C.glow); g.addColorStop(1, C.glow + "00");
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(px, py, 26 * d, 0, 6.283); ctx.fill();
+      ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(px, py, 6 * d, 0, 6.283); ctx.fill();
+      break; }
+    case "wave": case "cool": {
+      const col = kind === "cool" ? "#7FD6FF" : C.glow; const amp = h * (.06 + .22 * L);
+      for (let k = 0; k < 3; k++) {
+        ctx.beginPath(); const base = h * (.78 - .32 * L) + k * 18 * d;
+        ctx.moveTo(0, h);
+        for (let x = 0; x <= w; x += 6 * d) ctx.lineTo(x, base - Math.sin(x / w * 6.283 * 1.2 + t * .6 + k) * amp * (1 - k * .25));
+        ctx.lineTo(w, h); ctx.closePath();
+        ctx.fillStyle = col + ["66", "33", "1c"][k]; ctx.fill();
+      }
+      if (kind === "cool") { ctx.fillStyle = "#BDEBFF"; for (let k = 0; k < 24; k++) { const x = (k * 97 % w), y = (h - ((t * 30 * d + k * 53) % h)); ctx.globalAlpha = .25 * (ph.kind === "in" ? 1 : .3); ctx.beginPath(); ctx.arc(x, y, 2 * d, 0, 6.283); ctx.fill(); } ctx.globalAlpha = 1; }
+      break; }
+    case "hum": {
+      orb(ctx, cx, cy, R, L, C.glow, t);
+      if (s.seg.type === "hum") for (let k = 0; k < 4; k++) { const rr = R * (.5 + ((s.p * 2 + k / 4) % 1) * 1.1); ctx.strokeStyle = C.saffron; ctx.globalAlpha = .5 * (1 - ((s.p * 2 + k / 4) % 1)); ctx.lineWidth = 3 * d; ctx.beginPath(); ctx.arc(cx, cy, rr, 0, 6.283); ctx.stroke(); }
+      ctx.globalAlpha = 1; break; }
+    case "balloon": {
+      const r = R * (.45 + .5 * L);
+      ctx.strokeStyle = C.mist + "88"; ctx.lineWidth = 2 * d; ctx.beginPath(); ctx.moveTo(cx, cy + r * 1.1); ctx.bezierCurveTo(cx - 20 * d, cy + r * 1.5, cx + 20 * d, cy + r * 1.8, cx, h * .96); ctx.stroke();
+      const g = ctx.createRadialGradient(cx - r * .35, cy - r * .4, r * .1, cx, cy, r * 1.2); g.addColorStop(0, "#FFD48A"); g.addColorStop(1, C.saffron + "cc");
+      ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(cx, cy, r * .9, r * 1.08, 0, 0, 6.283); ctx.fill();
+      // diaphragm line: moves down on the in-breath
+      const dy = cy + R * 1.25 + L * 14 * d; ctx.strokeStyle = C.glow; ctx.lineWidth = 3 * d; ctx.beginPath(); ctx.moveTo(cx - R * 1.1, dy - 30 * d * (1 - L)); ctx.quadraticCurveTo(cx, dy - 70 * d * (1 - L) , cx + R * 1.1, dy - 30 * d * (1 - L)); ctx.stroke();
+      break; }
+    case "nostril": {
+      const side = ph.side; const off = R * .75;
+      [["L", cx - off], ["R", cx + off]].forEach(([k, x]) => {
+        const on = k === side; ctx.globalAlpha = on ? 1 : .25;
+        orb(ctx, x, cy, R * .55, on ? L : .2, on ? C.glow : C.violet, t);
+        ctx.globalAlpha = 1; ctx.fillStyle = C.mist; ctx.font = `${600} ${14 * d}px Unbounded, sans-serif`; ctx.textAlign = "center"; ctx.fillText(k === "L" ? "LEFT" : "RIGHT", x, cy + R * 1.05);
+      });
+      break; }
+    case "focus_ring": {
+      const rr = R * (.4 + .6 * L);
+      ctx.strokeStyle = C.ink3; ctx.lineWidth = 3 * d; ctx.beginPath(); ctx.arc(cx, cy, R, 0, 6.283); ctx.stroke();
+      const gr = ctx.createRadialGradient(cx, cy, rr * .2, cx, cy, rr); gr.addColorStop(0, C.glow + "10"); gr.addColorStop(1, C.glow + "55");
+      ctx.fillStyle = gr; ctx.beginPath(); ctx.arc(cx, cy, rr, 0, 6.283); ctx.fill();
+      ctx.shadowColor = C.glow; ctx.shadowBlur = 30 * d; ctx.strokeStyle = C.glow; ctx.lineWidth = 6 * d; ctx.beginPath(); ctx.arc(cx, cy, rr, 0, 6.283); ctx.stroke(); ctx.shadowBlur = 0;
+       break; }
+    case "focus_dot": {
+      const x = w * (.12 + .76 * L), y = cy + Math.sin(t * .7) * h * .04;
+      for (let k = 1; k < 14; k++) { ctx.fillStyle = C.glow; ctx.globalAlpha = .05 * (14 - k) / 14 * 3; ctx.beginPath(); ctx.arc(x - (s.seg.to > s.seg.from ? 1 : -1) * k * 9 * d, y, 9 * d, 0, 6.283); ctx.fill(); }
+      ctx.globalAlpha = 1; const g = ctx.createRadialGradient(x, y, 0, x, y, 30 * d); g.addColorStop(0, "#fff"); g.addColorStop(.3, C.glow); g.addColorStop(1, C.glow + "00"); ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, 30 * d, 0, 6.283); ctx.fill(); break; }
+    case "stars": {
+      for (const st of STARS) { ctx.fillStyle = C.mist; ctx.globalAlpha = .15 + .75 * L * (.6 + .4 * Math.sin(t + st.ph)); ctx.beginPath(); ctx.arc(st.x * w, st.y * h, st.r * d * (1 + L * .6), 0, 6.283); ctx.fill(); }
+      ctx.globalAlpha = .5 + .3 * L; orb(ctx, w * .72, h * .26, R * .35, L, "#F3E7C2", t); ctx.globalAlpha = 1; break; }
+    case "sigh": case "orb": default:
+      orb(ctx, cx, cy, R, L, kind === "orb" ? C.violet : C.glow, t);
+  }
+}
+
+/* ---------- hero orb ---------- */
+(function hero() {
+  const cv = $("#heroOrb"); const tl = buildTimeline([["in", 4], ["out", 6]]); const label = $("#heroLabel"); let start = performance.now();
+  function frame(now) { const t = (now - start) / 1000; const s = sampleAt(tl, REDUCED ? 2 : t); draw("hum", cv, { ...s, seg: { ...s.seg, type: "in" } }, t); label.textContent = REDUCED ? "Breathe gently" : PHASE[s.seg.type].word; requestAnimationFrame(frame); }
+  requestAnimationFrame(frame);
+})();
+
+/* ---------- library ---------- */
+$("#safetyShort").textContent = " " + DATA.safety.short;
+function renderLib() {
+  const lib = $("#lib"); lib.innerHTML = "";
+  for (const ex of DATA.exercises) {
+    const pat = Object.values(ex.patterns)[0];
+    const b = document.createElement("button"); b.className = "card" + (unlocked(ex) ? "" : " locked");
+    b.innerHTML = `${unlocked(ex) ? "" : `<span class="lock">Day ${ex.course_day}</span>`}
+      <div class="thumb"><canvas aria-hidden="true"></canvas></div>
+      <div style="display:grid;gap:4px"><h3>${esc(ex.title)}</h3>${ex.sanskrit ? `<span class="sk">${esc(ex.sanskrit)}</span>` : ""}</div>
+      <p class="muted" style="font-size:15px">${esc(ex.purpose)}</p>
+      <div class="meta"><span>${ex.minutes} min</span><span>${esc(pat.label)}</span><span>${esc(ex.level)}</span></div>`;
+    b.addEventListener("click", () => openSheet(ex.id));
+    lib.appendChild(b);
+    const cv = b.querySelector("canvas"); const tl = buildTimeline(pat.phases);
+    thumbs.push({ cv, kind: ex.visual, tl });
+  }
+}
+const thumbs = [];
+(function animThumbs() { const t0 = performance.now(); function f(now) { const t = (now - t0) / 1000; for (const th of thumbs) { if (!th.cv.isConnected) continue; const r = th.cv.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) continue; draw(th.kind, th.cv, sampleAt(th.tl, REDUCED ? 1.5 : t), t, { tl: th.tl }); } requestAnimationFrame(f); } requestAnimationFrame(f); })();
+renderLib();
+
+/* ---------- videos ---------- */
+const VID = Object.fromEntries(VIDEOS.map((v) => [v.id, v]));
+const vcard = (v) => `<button class="vid" data-v="${v.id}"><div class="pic" style="background-image:url('${v.poster}')"><span class="len">${esc(v.len)}</span></div><div class="txt"><h3>${esc(v.title)}</h3>${v.blurb ? `<p class="muted" style="font-size:14px">${esc(v.blurb)}</p>` : ""}</div></button>`;
+$("#rlVids").innerHTML = VIDEOS.filter((v) => v.group === "real").map(vcard).join("");
+function openVideo(id) {
+  const v = VID[id]; if (!v) return; const el = $("#vEl");
+  $("#vTitle").textContent = v.title; el.poster = v.poster; el.src = v.src;
+  $("#vmodal").hidden = false; document.body.style.overflow = "hidden"; el.play().catch(() => {}); $("#vClose").focus();
+}
+function closeVideo() { const el = $("#vEl"); el.pause(); el.removeAttribute("src"); el.load(); $("#vmodal").hidden = true; document.body.style.overflow = ""; }
+document.addEventListener("click", (e) => { const b = e.target.closest("[data-v]"); if (b) openVideo(b.dataset.v); });
+$("#vClose").onclick = closeVideo;
+$("#vmodal").addEventListener("click", (e) => { if (e.target.id === "vmodal") closeVideo(); });
+addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("#vmodal").hidden) closeVideo(); });
+
+/* ---------- course ---------- */
+function renderCourse() {
+  const done = store.get("days", []);
+  $("#courseMsg").textContent = DATA.course.promise + " " + DATA.course.message;
+  $("#days").innerHTML = DATA.course.days.map((d) => `<div class="day${done.includes(d.day) ? " done" : ""}"><span class="n">Day ${d.day}</span><h3>${esc(d.title)}</h3><p class="muted" style="font-size:14px">${d.exercises.map((id) => esc(EX[id].title)).join(" + ")}</p>${PREVIEW() && VID["course-day" + d.day] ? `<button class="watch" data-v="course-day${d.day}">Watch Day ${d.day} · ${esc(VID["course-day" + d.day].len)}</button>` : ""}</div>`).join("");
+  $("#courseCta").innerHTML = PREVIEW()
+    ? `<span class="muted">Preview mode: all course days are unlocked on this device.</span>`
+    : `<span class="btn btn-ghost" aria-disabled="true">Course opens soon</span><span class="muted" style="font-size:15px">Available soon through Rareearth curators.</span>`;
+}
+renderCourse();
+
+/* ---------- science + myths ---------- */
+$("#sci").innerHTML = VIDEOS.filter((v) => v.group === "science").map(vcard).join("");
+$("#mythList").innerHTML = MYTHS.map((m, i) => `<button class="myth" aria-pressed="false" data-i="${i}"><span class="k m">Myth</span><span>${esc(m[0])}</span><span class="hint">Tap to see the science</span></button>`).join("");
+$("#mythList").addEventListener("click", (e) => {
+  const b = e.target.closest(".myth"); if (!b) return; const m = MYTHS[+b.dataset.i]; const on = b.getAttribute("aria-pressed") === "true";
+  b.setAttribute("aria-pressed", String(!on));
+  b.innerHTML = on ? `<span class="k m">Myth</span><span>${esc(m[0])}</span><span class="hint">Tap to see the science</span>` : `<span class="k s">Science</span><span>${esc(m[1])}</span><span class="hint">Tap to flip back</span>`;
+});
+
+/* ---------- details sheet ---------- */
+let chosen = {};
+function openSheet(id) {
+  const ex = EX[id]; const keys = Object.keys(ex.patterns); const pk = chosen[id] || keys[0];
+  const pat = ex.patterns[pk];
+  $("#sheet").innerHTML = `
+    <div class="row"><span class="eyebrow">${esc(ex.tradition)}</span><button class="icon-btn" id="sheetClose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <div style="display:grid;gap:6px"><h2 id="sheetTitle">${esc(ex.title)}</h2>${ex.sanskrit ? `<span class="sk" style="font-style:italic;color:var(--saffron)">${esc(ex.sanskrit)}</span>` : ""}<p class="muted">${esc(ex.purpose)}</p></div>
+    <div class="meta" style="display:flex;flex-wrap:wrap;gap:6px 14px;font:13px var(--f-mono);color:var(--mist-2)"><span>${ex.minutes} min</span><span>${bpm(pat.phases)}</span><span>${esc(ex.level)}</span><span>Use it ${esc(ex.use_when.join(", "))}</span></div>
+    ${keys.length > 1 ? `<div style="display:grid;gap:8px"><span class="eyebrow" style="color:var(--mist-2)">Rhythm</span><div class="pills">${keys.map((k) => `<button class="pill" data-k="${k}" aria-pressed="${k === pk}">${esc(ex.patterns[k].label)}</button>`).join("")}</div></div>` : ""}
+    <ol>${ex.steps.map((s) => `<li>${esc(s)}</li>`).join("")}</ol>
+    <p class="note">${esc(ex.safety_note)}</p>
+    ${unlocked(ex)
+      ? `<button class="btn btn-primary" id="startEx" style="justify-content:center">Start · ${ex.minutes} min</button>`
+      : `<div class="note" style="border-color:var(--violet)">This exercise is Day ${ex.course_day} of the 7-day course, which opens soon.</div>`}`;
+  $("#sheetBg").hidden = false; document.body.style.overflow = "hidden";
+  $("#sheetClose").onclick = closeSheet; $("#sheetClose").focus();
+  $("#sheet").querySelectorAll(".pill").forEach((p) => p.onclick = () => { chosen[id] = p.dataset.k; openSheet(id); });
+  const st = $("#startEx"); if (st) st.onclick = () => { closeSheet(); startExercise(id, pk); };
+}
+function closeSheet() { $("#sheetBg").hidden = true; document.body.style.overflow = ""; }
+$("#sheetBg").addEventListener("click", (e) => { if (e.target.id === "sheetBg") closeSheet(); });
+addEventListener("keydown", (e) => { if (e.key === "Escape") { if (!$("#player").hidden) exitPlayer(); else if (!$("#sheetBg").hidden) closeSheet(); } });
+
+/* ---------- sound: soft tones + optional voice ---------- */
+let soundOn = store.get("sound", true), actx = null;
+function tone(kind) {
+  if (!soundOn) return;
+  try {
+    actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+    const o = actx.createOscillator(), g = actx.createGain(), n = actx.currentTime;
+    const f = { in: [392, 523], out: [523, 349], hold: [440, 440], natural: [330, 330] }[kind] || [440, 440];
+    o.type = "sine"; o.frequency.setValueAtTime(f[0], n); o.frequency.linearRampToValueAtTime(f[1], n + .6);
+    g.gain.setValueAtTime(0, n); g.gain.linearRampToValueAtTime(kind === "hold" ? .03 : .06, n + .08); g.gain.exponentialRampToValueAtTime(.0001, n + 1.1);
+    o.connect(g).connect(actx.destination); o.start(n); o.stop(n + 1.2);
+  } catch {}
+}
+let voice = null;
+function pickVoice() { try { const vs = speechSynthesis.getVoices(); voice = vs.find((v) => /en-IN/i.test(v.lang)) || vs.find((v) => /en-GB/i.test(v.lang)) || vs.find((v) => /^en/i.test(v.lang)) || null; } catch {} }
+try { pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; } catch {}
+function say(text, onend) {
+  try {
+    if (!soundOn || !("speechSynthesis" in window)) { onend && setTimeout(onend, Math.max(2500, text.length * 55)); return; }
+    speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(text); if (voice) u.voice = voice; u.rate = .9; u.pitch = 1;
+    let done = false; const fin = () => { if (!done) { done = true; onend && onend(); } };
+    u.onend = fin; u.onerror = fin; speechSynthesis.speak(u); setTimeout(fin, text.length * 95 + 4000);
+  } catch { onend && setTimeout(onend, 2500); }
+}
+function stopVoice() { try { speechSynthesis.cancel(); } catch {} }
+const ICON = {
+  pause: `<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>`,
+  play: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>`,
+  on: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16 9a4 4 0 010 6M18.5 6.5a8 8 0 010 11"/></svg>`,
+  off: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M17 9l5 6M22 9l-5 6"/></svg>`,
+};
+function paintSound() { const b = $("#pSound"); b.innerHTML = soundOn ? ICON.on : ICON.off; b.setAttribute("aria-pressed", String(soundOn)); b.setAttribute("aria-label", soundOn ? "Sound on" : "Sound off"); }
+$("#pSound").onclick = () => { soundOn = !soundOn; store.set("sound", soundOn); if (!soundOn) stopVoice(); paintSound(); };
+
+/* ---------- player ---------- */
+let P = null, wake = null;
+async function keepAwake() { try { wake = await navigator.wakeLock?.request("screen"); } catch {} }
+function fmt(s) { s = Math.max(0, Math.ceil(s)); return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); }
+function overlay(html) { const o = $("#pOverlay"); o.innerHTML = html; o.hidden = false; $("#pCue").hidden = true; }
+function hideOverlay() { $("#pOverlay").hidden = true; $("#pCue").hidden = false; }
+
+function startExercise(id, pk) {
+  const ex = EX[id]; const pat = ex.patterns[pk]; const tl = buildTimeline(pat.phases);
+  const total = tl.segs[0].type === "natural" ? ex.minutes * 60 : Math.max(1, Math.round(ex.minutes * 60 / tl.cycle)) * tl.cycle;
+  P = { ex, pk, tl, total, t: 0, running: false, stage: "safety", last: 0, lastSeg: -1, cuesSpoken: 0, raf: 0 };
+  $("#player").hidden = false; document.body.style.overflow = "hidden";
+  $("#pTitle").textContent = ex.title; $("#pPattern").textContent = patternText(pat.phases); $("#pTime").textContent = fmt(total);
+  $("#pBar").style.width = "0%"; $("#pCaption").textContent = ""; $("#pWord").textContent = ""; $("#pCount").textContent = "";
+  paintSound(); setPlay(false); keepAwake();
+  if (!store.get("safetyAck", false)) showSafety(); else showIntro();
+  loop();
+}
+function showSafety() {
+  P.stage = "safety";
+  overlay(`<span class="eyebrow" style="color:var(--saffron)">Before your first exercise</span><h3>Go gently</h3><ul>${DATA.safety.full.map((l) => `<li>${esc(l)}</li>`).join("")}</ul><button class="btn btn-primary" id="ackSafety" style="justify-content:center">I'll go gently</button>`);
+  $("#ackSafety").onclick = () => { store.set("safetyAck", true); showIntro(); };
+}
+function showIntro() {
+  P.stage = "intro";
+  overlay(`<span class="eyebrow">How it works</span><h3>${esc(P.ex.title)}</h3><p class="muted">${esc(P.ex.voice_intro)}</p><div class="row"><button class="btn btn-primary" id="goEx">Begin</button><button class="btn btn-ghost" id="listen">${soundOn ? "Listen first" : "Turn sound on to listen"}</button></div>`);
+  $("#goEx").onclick = () => { stopVoice(); countIn(); };
+  $("#listen").onclick = () => { if (!soundOn) { soundOn = true; store.set("sound", true); paintSound(); } $("#listen").disabled = true; $("#listen").textContent = "Listening…"; say(P.ex.voice_intro, () => { if (P && P.stage === "intro") countIn(); }); };
+}
+function countIn() {
+  P.stage = "countin"; hideOverlay(); let n = 3;
+  $("#pCaption").textContent = "Get comfortable. Starting in…";
+  const step = () => { if (!P || P.stage !== "countin") return; if (n === 0) { P.stage = "run"; $("#pCaption").textContent = ""; play(); return; } $("#pWord").textContent = "Get ready"; $("#pCount").textContent = n; tone("hold"); n--; setTimeout(step, 1000); };
+  step();
+}
+function setPlay(running) { const b = $("#pPlay"); b.innerHTML = running ? ICON.pause : ICON.play; b.setAttribute("aria-label", running ? "Pause" : "Resume"); }
+function play() { if (!P) return; P.running = true; P.last = performance.now(); setPlay(true); }
+function pause() { if (!P) return; P.running = false; setPlay(false); stopVoice(); if (P.stage === "run") { $("#pWord").textContent = "Paused"; $("#pCount").textContent = ""; } }
+$("#pPlay").onclick = () => { if (!P) return; if (P.stage !== "run") { if (P.stage === "intro") { stopVoice(); countIn(); } return; } P.running ? pause() : play(); };
+$("#pExit").onclick = () => exitPlayer();
+document.addEventListener("visibilitychange", () => { if (document.hidden && P && P.running) pause(); });
+
+function loop() {
+  const cv = $("#pCanvas");
+  const f = (now) => {
+    if (!P) return;
+    if (P.running && P.stage === "run") { P.t += (now - P.last) / 1000; P.last = now; }
+    const s = sampleAt(P.tl, P.t);
+    draw(P.ex.visual, cv, P.stage === "run" ? s : { ...s, level: .35 }, now / 1000, { tl: P.tl });
+    if (P.stage === "run") {
+      const ph = PHASE[s.seg.type];
+      const segKey = Math.floor(P.t / P.tl.cycle) * 10 + s.idx;
+      if (P.running && segKey !== P.lastSeg) {
+        P.lastSeg = segKey; tone(ph.kind === "out" ? "out" : ph.kind);
+        if (P.cuesSpoken < 6 && ph.kind !== "natural") { say(s.seg.type === "hum" ? "hum" : ph.kind === "hold" ? "pause" : ph.kind === "in" ? "in" : "out"); P.cuesSpoken++; }
+      }
+      if (P.running) { $("#pWord").textContent = ph.word; $("#pCount").textContent = ph.kind === "natural" ? "" : Math.max(1, Math.ceil(s.seg.dur * (1 - s.p))); }
+      $("#pBar").style.width = Math.min(100, P.t / P.total * 100) + "%"; $("#pTime").textContent = fmt(P.total - P.t);
+      if (P.ex.visual === "orb" && P.running) $("#pCaption").textContent = ["Drop your shoulders.", "Unclench your jaw.", "Notice where you feel the breath.", "Let each breath out be a little softer."][Math.floor(P.t / 30) % 4];
+      if (P.t >= P.total) finish();
+    }
+    P && (P.raf = requestAnimationFrame(f));
+  };
+  P.raf = requestAnimationFrame(f);
+}
+function finish() {
+  P.stage = "done"; P.running = false; setPlay(false); $("#pBar").style.width = "100%"; $("#pTime").textContent = "0:00";
+  say(P.ex.voice_outro);
+  const count = store.get("count." + P.ex.id, 0) + 1; store.set("count." + P.ex.id, count);
+  const day = DATA.course.days.find((d) => d.exercises[d.exercises.length - 1] === P.ex.id);
+  const reflect = day && PREVIEW() ? `<label for="refl" class="eyebrow" style="color:var(--mist-2)">Day ${day.day} reflection (stays on this phone)</label><p>${esc(day.reflection)}</p><textarea id="refl">${esc(store.get("refl." + day.day, ""))}</textarea>` : "";
+  overlay(`<span class="eyebrow">Well done</span><h3>${esc(P.ex.voice_outro)}</h3>${reflect}<p class="muted" style="font-size:14px">You've done ${esc(P.ex.title)} ${count} ${count === 1 ? "time" : "times"} on this device.</p><div class="feel" role="group" aria-label="How do you feel now?"><span class="muted" style="width:100%">How do you feel now?</span>${["Calmer", "About the same", "Not sure"].map((x) => `<button class="pill" data-f="${x}">${x}</button>`).join("")}</div><div class="row"><button class="btn btn-primary" id="again">Again</button><button class="btn btn-ghost" id="doneBtn">Back to the Lab</button></div>`);
+  $("#pOverlay").querySelectorAll("[data-f]").forEach((b) => b.onclick = () => { $("#pOverlay").querySelectorAll("[data-f]").forEach((x) => x.setAttribute("aria-pressed", "false")); b.setAttribute("aria-pressed", "true"); });
+  const saveRefl = () => { const r = $("#refl"); if (day && r) { store.set("refl." + day.day, r.value.slice(0, 1000)); const d = store.get("days", []); if (!d.includes(day.day)) { d.push(day.day); store.set("days", d); } renderCourse(); } };
+  $("#again").onclick = () => { saveRefl(); const id = P.ex.id, pk = P.pk; exitPlayer(true); startExercise(id, pk); };
+  $("#doneBtn").onclick = () => { saveRefl(); exitPlayer(); };
+}
+function exitPlayer(quiet) { if (P) cancelAnimationFrame(P.raf); P = null; stopVoice(); try { wake?.release(); } catch {} $("#player").hidden = true; document.body.style.overflow = ""; hideOverlay(); }
+</script>
+
+</html>
