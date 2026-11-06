@@ -322,7 +322,7 @@ const store = {
 const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const EX = Object.fromEntries(DATA.exercises.map((e) => [e.id, e]));
 const COURSE_HASH = "3783257b85a447131ac4b80e91297eeb311a70d9c7d2cf934b0fc2919a9b0f37";
-const COURSE_BUY_URL = "https://rareearthwellness.com/?add-to-cart=COURSE_PRODUCT_ID";
+const COURSE_BUY_URL = "https://rareearthwellness.com/checkout/?add-to-cart=2668";
 const COURSE_PRICE = "₹50";
 const hasCourse = () => store.get("course", false) === true;
 const unlocked = (ex) => ex.tier === "free" || hasCourse();
