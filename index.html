@@ -223,7 +223,7 @@ textarea { width: 100%; box-sizing: border-box; min-height: 80px; background: va
       <div class="block-head">
         <span class="eyebrow">Experience the breath</span>
         <h2 id="try-h">Pick one. Two minutes is enough.</h2>
-        <p class="muted">Four free exercises to start. Pick one and follow the light. The full 7-day course is further down.</p>
+        <p class="muted">Four exercises to start. Pick one and follow the light. The full 7-day course, also free, is further down.</p>
       </div>
       <div class="safety" role="note">
         <div><b>Go gently</b><span id="safetyShort"></span></div>
@@ -324,7 +324,7 @@ const EX = Object.fromEntries(DATA.exercises.map((e) => [e.id, e]));
 const COURSE_HASH = "3783257b85a447131ac4b80e91297eeb311a70d9c7d2cf934b0fc2919a9b0f37";
 const COURSE_BUY_URL = "https://rareearthwellness.com/checkout/?add-to-cart=2668";
 const COURSE_PRICE = "₹50";
-const hasCourse = () => store.get("course", false) === true;
+const hasCourse = () => true; // Breath Lab is fully free (11 Nov 2026)
 const unlocked = (ex) => ex.tier === "free" || hasCourse();
 async function checkAccess() {
   try {
@@ -544,7 +544,7 @@ function renderCourse() {
   $("#days").querySelectorAll("[data-ex]").forEach((b) => b.onclick = () => openSheet(b.dataset.ex));
   const next = DATA.course.days.find((d) => !done.includes(d.day)) || DATA.course.days[0];
   $("#courseCta").innerHTML = open
-    ? `<button class="btn btn-primary" id="startDay">Start Day ${next.day} · ${esc(EX[next.exercises[0]].title)}</button><span class="muted" style="font-size:15px">Your course is unlocked on this device. Your progress stays here too.</span>`
+    ? `<button class="btn btn-primary" id="startDay">Start Day ${next.day} · ${esc(EX[next.exercises[0]].title)}</button><span class="muted" style="font-size:15px">Free for everyone. Your progress stays on this phone.</span>`
     : `<div class="buy"><div><b class="price">${COURSE_PRICE}</b><span class="muted"> for the full week</span></div><ul><li>7 guided sessions, 6 to 7 minutes each</li><li>Traditional Indian pranayama and calm, modern techniques</li><li>Works on any phone. No app, no login</li></ul><a class="btn btn-primary" href="${COURSE_BUY_URL}" target="_blank" rel="noopener">Join the 7-day course · ${COURSE_PRICE}</a><span class="muted" style="font-size:14px">After payment you'll get your personal course link on the order page and in your confirmation email. Open it on the phone you'll practise on.</span></div>`;
   const st = $("#startDay"); if (st) st.onclick = () => openSheet(next.exercises[0]);
 }
